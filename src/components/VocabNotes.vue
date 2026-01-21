@@ -77,7 +77,7 @@ onMounted(() => {
 // 加载笔记列表
 const loadNotes = async () => {
     try {
-        const res = await axios.get('http://localhost:3001/api/vocabulary/notes', {
+        const res = await axios.get('https://english-backend-five.vercel.app/api/vocabulary/notes', {
             params: {
                 keyword: searchKeyword.value
             }
@@ -113,7 +113,7 @@ const startEditing = (item) => {
 // 确认编辑
 const confirmEdit = async (item) => {
     try {
-        await axios.post('http://localhost:3001/api/vocabulary/update-note', {
+        await axios.post('https://english-backend-five.vercel.app/api/vocabulary/update-note', {
             word: item.word,
             note: item.tempNote
         })
@@ -165,7 +165,7 @@ const closeModal = () => {
 // 确认删除
 const confirmDelete = async () => {
     try {
-        await axios.post('http://localhost:3001/api/vocabulary/delete-note', {
+        await axios.post('https://english-backend-five.vercel.app/api/vocabulary/delete-note', {
             word: currentDeleteWord.value
         })
         // 重新加载笔记列表

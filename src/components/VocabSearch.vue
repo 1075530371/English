@@ -63,7 +63,7 @@ const loading = ref(false)
 const currentWord = ref(null)
 
 // 后端接口地址
-const API_BASE = 'http://localhost:3001/api/vocabulary'
+const API_BASE = 'https://english-backend-five.vercel.app/api/vocabulary'
 
 // 搜索词汇
 const handleSearch = async () => {

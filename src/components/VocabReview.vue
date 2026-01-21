@@ -38,7 +38,7 @@
                 <span v-if="currentWord.fronted" class="component-item">
                     前缀: {{ currentWord.fronted }}
                     <span v-if="currentWord.fronted_meaning" class="meaning-text">({{ currentWord.fronted_meaning
-                    }})</span>
+                        }})</span>
                 </span>
                 <span v-if="currentWord.root" class="component-item">
                     词根: {{ currentWord.root }}
@@ -47,7 +47,7 @@
                 <span v-if="currentWord.backend" class="component-item">
                     后缀: {{ currentWord.backend }}
                     <span v-if="currentWord.backend_meaning" class="meaning-text">({{ currentWord.backend_meaning
-                    }})</span>
+                        }})</span>
                 </span>
             </div>
         </div>
@@ -90,7 +90,7 @@ const loadReviewWords = async () => {
         localStorage.setItem('vocabLevel', selectedLevel.value)
         localStorage.setItem('dailyReviewCount', reviewCount.value)
 
-        const res = await axios.get('http://localhost:3001/api/vocabulary/review-list', {
+        const res = await axios.get('https://english-backend-five.vercel.app/api/vocabulary/review-list', {
             params: {
                 level: selectedLevel.value,
                 count: reviewCount.value
@@ -121,7 +121,7 @@ const playPronunciation = () => {
 const markAsReviewed = async () => {
     if (!currentWord.value.word) return
     try {
-        await axios.post('http://localhost:3001/api/vocabulary/add-review', {
+        await axios.post('https://english-backend-five.vercel.app/api/vocabulary/add-review', {
             word: currentWord.value.word
         })
 
@@ -143,7 +143,7 @@ const markAsReviewed = async () => {
 const markAsUnmastered = async () => {
     if (!currentWord.value.word) return
     try {
-        await axios.post('http://localhost:3001/api/vocabulary/reset-mastered', {
+        await axios.post('https://english-backend-five.vercel.app/api/vocabulary/reset-mastered', {
             word: currentWord.value.word
         })
 

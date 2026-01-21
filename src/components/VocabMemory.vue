@@ -40,19 +40,19 @@
                     <span v-if="currentWord.fronted" class="component-item">
                         前缀: {{ currentWord.fronted }}
                         <span v-if="currentWord.fronted_meaning" class="meaning-text">({{ currentWord.fronted_meaning
-                        }})</span>
+                            }})</span>
                     </span>
                     <!-- 词根 + 词根含义 -->
                     <span v-if="currentWord.root" class="component-item">
                         词根: {{ currentWord.root }}
                         <span v-if="currentWord.root_meaning" class="meaning-text">({{ currentWord.root_meaning
-                        }})</span>
+                            }})</span>
                     </span>
                     <!-- 后缀 + 后缀含义 -->
                     <span v-if="currentWord.backend" class="component-item">
                         后缀: {{ currentWord.backend }}
                         <span v-if="currentWord.backend_meaning" class="meaning-text">({{ currentWord.backend_meaning
-                        }})</span>
+                            }})</span>
                     </span>
                 </div>
             </div>
@@ -159,7 +159,7 @@ const loadWords = async () => {
         localStorage.setItem('dailyMemorizeCount', dailyCount.value)
 
         // 从后端获取未学过且随机不连续的单词
-        const res = await axios.get('http://localhost:3001/api/vocabulary/list', {
+        const res = await axios.get('https://english-backend-five.vercel.app/api/vocabulary/list', {
             params: {
                 level: selectedLevel.value,
                 count: dailyCount.value,
@@ -186,7 +186,7 @@ const loadWords = async () => {
 const loadNote = async () => {
     if (!currentWord.value.word) return
     try {
-        const res = await axios.get('http://localhost:3001/api/vocabulary/detail', {
+        const res = await axios.get('https://english-backend-five.vercel.app/api/vocabulary/detail', {
             params: { word: currentWord.value.word }
         })
         if (res.data.code === 200) {
@@ -215,7 +215,7 @@ const playPronunciation = () => {
 const markAsMastered = async () => {
     if (!currentWord.value.word) return
     try {
-        await axios.post('http://localhost:3001/api/vocabulary/mark', {
+        await axios.post('https://english-backend-five.vercel.app/api/vocabulary/mark', {
             word: currentWord.value.word,
             is_mastered: 1
         })
@@ -243,7 +243,7 @@ const saveNote = async () => {
         return
     }
     try {
-        await axios.post('http://localhost:3001/api/vocabulary/save-note', {
+        await axios.post('https://english-backend-five.vercel.app/api/vocabulary/save-note', {
             word: currentWord.value.word,
             note: noteContent.value
         })
